@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedido Especial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<audio id="musica" autoplay muted>
+    <source src="lisboa4.mp3?v=1" type="audio/mpeg">
+</audio>
+
+<!-- Tela 1 -->
+<div id="tela1" class="tela fade">
+    <h1>Lorena, você aceita se casar comigo?</h1>
+    <div class="botoes">
+        <button class="btn" onclick="sim()">Sim</button>
+        <button class="btn" onclick="nao()">Não</button>
+    </div>
+</div>
+
+<!-- Tela 2 -->
+<div id="tela2" class="tela escondido fade">
+    <div class="caixa-romantica">
+        <p id="textoDigitado" class="texto"></p>
+        <!-- GIF final -->
+        <img id="gifFinal" src="fundo.gif" alt="GIF Fofo" style="display:none;">
+    </div>
+</div>
+
+<!-- Tela 3 -->
+<div id="tela3" class="tela escondido fade">
+    <h2>Tem certeza disso?</h2>
+    <button class="btn" onclick="irFoto()">Sim</button>
+    <button class="btn" onclick="noFoto()">Não</button>
+</div>
+
+<!-- Tela 4 -->
+<div id="tela4" class="tela escondido fade">
+    <h2>Então tá… mas antes olha isso 🥺</h2>
+    <button class="btn" onclick="irFoto()">Ir para foto</button>
+</div>
+
+<div id="hearts"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
