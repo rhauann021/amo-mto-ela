@@ -12,35 +12,25 @@
     <source src="lisboa4.mp3?v=1" type="audio/mpeg">
 </audio>
 
-<!-- Tela 1 -->
 <div id="tela1" class="tela fade">
     <h1>Lorena, você aceita se casar comigo?</h1>
     <div class="botoes">
-        <button class="btn" onclick="sim()">Sim</button>
-        <button class="btn" onclick="nao()">Não</button>
+        <button id="btnSim" class="btn">Sim</button>
+        <button id="btnNao" class="btn">Não</button>
     </div>
 </div>
 
-<!-- Tela 2 -->
 <div id="tela2" class="tela escondido fade">
-    <div class="caixa-romantica">
+    <div class="caixa caixa-romantica">
         <p id="textoDigitado" class="texto"></p>
-        <!-- GIF final -->
         <img id="gifFinal" src="fundo.gif" alt="GIF Fofo" style="display:none;">
     </div>
 </div>
 
-<!-- Tela 3 -->
 <div id="tela3" class="tela escondido fade">
     <h2>Tem certeza disso?</h2>
-    <button class="btn" onclick="irFoto()">Sim</button>
-    <button class="btn" onclick="noFoto()">Não</button>
-</div>
-
-<!-- Tela 4 -->
-<div id="tela4" class="tela escondido fade">
-    <h2>Então tá… mas antes olha isso 🥺</h2>
-    <button class="btn" onclick="irFoto()">Ir para foto</button>
+    <button id="btnTela3Sim" class="btn">Sim</button>
+    <button id="btnTela3Nao" class="btn">Não</button>
 </div>
 
 <div id="hearts"></div>
