@@ -95,6 +95,12 @@ body::after {
     text-align: center;
 }
 
+.caixa,
+.caixa-romantica {
+    background: linear-gradient(160deg, rgba(26, 12, 24, 0.78), rgba(18, 8, 20, 0.72));
+    border-color: rgba(255, 220, 232, 0.42);
+}
+
 .tag-romantica {
     margin: 0 0 8px;
     font-size: 12px;
@@ -185,8 +191,8 @@ h2 {
     margin: 0;
     font-size: clamp(1.02rem, 2.5vw, 1.28rem);
     line-height: 1.72;
-    color: #ffe9f2;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    color: #fff6fb;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
 }
 
 #gifFinal {
