@@ -187,6 +187,14 @@ h2 {
     transform: translateY(1px) scale(0.98);
 }
 
+.btn:focus-visible {
+    outline: 3px solid rgba(255, 230, 241, 0.95);
+    outline-offset: 3px;
+    box-shadow:
+        0 0 0 6px rgba(255, 86, 153, 0.28),
+        0 14px 28px rgba(255, 44, 125, 0.42);
+}
+
 .texto {
     margin: 0;
     font-size: clamp(1.02rem, 2.5vw, 1.28rem);
