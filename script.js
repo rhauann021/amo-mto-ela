@@ -14,6 +14,8 @@ const audioNao = new Audio("nao.mp3?v=1");
 audioNao.preload = "auto";
 audioNao.loop = true;
 let indoParaVideo = false;
+let digitacaoTimer = null;
+let interromperDigitacao = false;
 
 function vincularClique(id, handler) {
     const elemento = document.getElementById(id);
@@ -55,6 +57,7 @@ setInterval(() => {
 }, 300);
 
 function sim() {
+    interromperDigitacao = false;
     audioNao.pause();
     audioNao.currentTime = 0;
 
@@ -84,6 +87,7 @@ function noFoto() {
     if (indoParaVideo) {
         return;
     }
+    interromperDigitacao = false;
 
     audioNao.pause();
     audioNao.currentTime = 0;
@@ -115,13 +119,13 @@ function irFoto() {
     if (gif) {
         gif.style.display = "none";
     }
+    interromperDigitacao = true;
+    if (digitacaoTimer) {
+        clearTimeout(digitacaoTimer);
+        digitacaoTimer = null;
+    }
 
-    document.body.style.transition = "opacity 0.12s ease";
-    document.body.style.opacity = "0";
-
-    setTimeout(() => {
-        window.location.replace("sua-foto.html");
-    }, 120);
+    window.location.replace("sua-foto.html");
 }
 
 function escreverTexto() {
@@ -152,13 +156,18 @@ Vamo casar logo e ter nossos filhinhos, meu momo ❤️`;
     let i = 0;
 
     function digitar() {
+        if (interromperDigitacao || indoParaVideo) {
+            return;
+        }
+
         elemento.innerHTML = texto.slice(0, i).replace(/\n/g, "<br>");
         i++;
 
         if (i <= texto.length) {
-            setTimeout(digitar, 40);
+            digitacaoTimer = setTimeout(digitar, 40);
         } else {
             gif.style.display = "block";
+            digitacaoTimer = null;
         }
     }
 
