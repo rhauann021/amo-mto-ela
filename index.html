@@ -2,7 +2,11 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedido Especial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -13,10 +17,14 @@
 </audio>
 
 <div id="tela1" class="tela fade">
-    <h1>Lorena, você aceita se casar comigo?</h1>
-    <div class="botoes">
-        <button id="btnSim" class="btn">Sim</button>
-        <button id="btnNao" class="btn">Não</button>
+    <div class="bloco-principal">
+        <p class="tag-romantica">24 de fevereiro de 2026</p>
+        <h1>Lorena, voce aceita se casar comigo?</h1>
+        <p class="subtitulo">Prometo te escolher todos os dias, em cada fase da nossa vida.</p>
+        <div class="botoes">
+            <button id="btnSim" class="btn">Sim</button>
+            <button id="btnNao" class="btn">Nao</button>
+        </div>
     </div>
 </div>
 
@@ -28,9 +36,14 @@
 </div>
 
 <div id="tela3" class="tela escondido fade">
-    <h2>Tem certeza disso?</h2>
-    <button id="btnTela3Sim" class="btn">Sim</button>
-    <button id="btnTela3Nao" class="btn">Não</button>
+    <div class="bloco-principal">
+        <h2>Tem certeza disso?</h2>
+        <p class="subtitulo">Pensa com carinho... tem video especial esperando por voce.</p>
+        <div class="botoes">
+            <button id="btnTela3Sim" class="btn">Sim</button>
+            <button id="btnTela3Nao" class="btn">Nao</button>
+        </div>
+    </div>
 </div>
 
 <div id="hearts"></div>

@@ -39,13 +39,18 @@ function mostrar(id) {
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.innerText = "💗";
+    const hearts = ["❤", "💕", "💖", "💗"];
+    heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    heart.style.fontSize = Math.random() * 22 + 16 + "px";
+    heart.style.setProperty("--drift", (Math.random() * 80 - 40) + "px");
+    heart.style.setProperty("--spin", (Math.random() * 120 - 60) + "deg");
+    heart.style.animationDuration = (Math.random() * 2 + 2.8) + "s";
+    heart.style.opacity = (Math.random() * 0.5 + 0.35).toFixed(2);
 
     document.getElementById("hearts").appendChild(heart);
 
-    setTimeout(() => heart.remove(), 4000);
+    setTimeout(() => heart.remove(), 5200);
 }, 300);
 
 function sim() {
