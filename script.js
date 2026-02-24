@@ -1,19 +1,41 @@
-// Liberação do áudio ao primeiro clique
-document.addEventListener("click", () => {
+document.addEventListener("click", (event) => {
+    if (event.target && event.target.id === "btnNao") {
+        return;
+    }
+
     const audio = document.getElementById("musica");
-    audio.muted = false;
-    audio.play().catch(() => {});
+    if (audio) {
+        audio.muted = false;
+        audio.play().catch(() => {});
+    }
 }, { once: true });
 
-// Controle de telas
+const audioNao = new Audio("nao.mp3?v=1");
+audioNao.preload = "auto";
+audioNao.loop = true;
+
+function vincularClique(id, handler) {
+    const elemento = document.getElementById(id);
+    if (elemento) {
+        elemento.addEventListener("click", handler);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    vincularClique("btnSim", sim);
+    vincularClique("btnNao", nao);
+    vincularClique("btnTela3Sim", irFoto);
+    vincularClique("btnTela3Nao", noFoto);
+});
+
 function mostrar(id) {
-    ["tela1", "tela2", "tela3", "tela4"].forEach(tela => {
+    ["tela1", "tela2", "tela3"].forEach(tela => {
         document.getElementById(tela).classList.add("escondido");
     });
     document.getElementById(id).classList.remove("escondido");
 }
 
-// Corações animados
+
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -26,30 +48,57 @@ setInterval(() => {
     setTimeout(() => heart.remove(), 4000);
 }, 300);
 
-// Telas
 function sim() {
+    audioNao.pause();
+    audioNao.currentTime = 0;
+
+    const audio = document.getElementById("musica");
+    if (audio) {
+        audio.muted = false;
+        audio.play().catch(() => {});
+    }
     mostrar("tela2");
     escreverTexto();
 }
 
 function nao() {
+    const audio = document.getElementById("musica");
+    if (audio) {
+        audio.pause();
+        audio.currentTime = 0;
+        audio.muted = true;
+    }
+
+    audioNao.currentTime = 0;
+    audioNao.play().catch(() => {});
     mostrar("tela3");
 }
 
 function noFoto() {
-    mostrar("tela4");
+    audioNao.pause();
+    audioNao.currentTime = 0;
+
+    const audio = document.getElementById("musica");
+    if (audio) {
+        audio.muted = false;
+        audio.play().catch(() => {});
+    }
+    mostrar("tela2");
+    escreverTexto();
 }
 
 function irFoto() {
     window.location.href = "sua-foto.html";
 }
 
-// Efeito máquina de escrever
 function escreverTexto() {
     const elemento = document.getElementById("textoDigitado");
     const gif = document.getElementById("gifFinal");
 
-    const texto = `Lorena, você é e sempre vai ser o amor da minha vida.
+
+
+
+ const texto = `Lorena, você é e sempre vai ser o amor da minha vida e nao quero q tu nunca esqueça disso.
 Eu te amo mais do que tudo nesse mundo grta. Só quero q tu saiba q eu nunca vou deixar de te amar, cada segundo q passa o meu amor por vc só aumenta e eu n consigo explicar isso
 eu só sei q eu necessito de vc, tu é uma grta incrivel, me salva todos os dias. mrm q meu dia seja horrivel eu tenho voce aq, infelizmente vc n ta aq do meu ladinho pra eu te beijar muitao 
 mas eu sempre fico imaginando vc aq cmg. agradeço mto a Deus por ter te colocado na minha vida meu amor, as vezes nem acredito q uma grta q eu conheci em um jogo ia se tornar o amor da minha vida e eu amar tanto assim (serio amor eu te amo tanto q chega a doer)
@@ -70,7 +119,6 @@ Vamo casar logo e ter nossos filhinhos, meu momo ❤️`;
         if (i <= texto.length) {
             setTimeout(digitar, 40);
         } else {
-            // Quando termina, mostra o GIF
             gif.style.display = "block";
         }
     }
