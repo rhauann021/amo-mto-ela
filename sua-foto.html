@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nosso Video</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #000;
+    }
+    video {
+      width: min(95vw, 980px);
+      height: auto;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <video controls autoplay loop playsinline>
+    <source src="./video.mp4" type="video/mp4">
+    Seu navegador nao suporta video HTML5.
+  </video>
+</body>
+</html>
