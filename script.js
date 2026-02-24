@@ -13,6 +13,7 @@ document.addEventListener("click", (event) => {
 const audioNao = new Audio("nao.mp3?v=1");
 audioNao.preload = "auto";
 audioNao.loop = true;
+let indoParaVideo = false;
 
 function vincularClique(id, handler) {
     const elemento = document.getElementById(id);
@@ -80,6 +81,10 @@ function nao() {
 }
 
 function noFoto() {
+    if (indoParaVideo) {
+        return;
+    }
+
     audioNao.pause();
     audioNao.currentTime = 0;
 
@@ -93,12 +98,41 @@ function noFoto() {
 }
 
 function irFoto() {
-    window.location.href = "sua-foto.html";
+    if (indoParaVideo) {
+        return;
+    }
+    indoParaVideo = true;
+
+    audioNao.pause();
+    audioNao.currentTime = 0;
+
+    const texto = document.getElementById("textoDigitado");
+    if (texto) {
+        texto.innerHTML = "";
+    }
+
+    const gif = document.getElementById("gifFinal");
+    if (gif) {
+        gif.style.display = "none";
+    }
+
+    document.body.style.transition = "opacity 0.12s ease";
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+        window.location.replace("sua-foto.html");
+    }, 120);
 }
 
 function escreverTexto() {
     const elemento = document.getElementById("textoDigitado");
     const gif = document.getElementById("gifFinal");
+    if (elemento) {
+        elemento.innerHTML = "";
+    }
+    if (gif) {
+        gif.style.display = "none";
+    }
 
 
 
